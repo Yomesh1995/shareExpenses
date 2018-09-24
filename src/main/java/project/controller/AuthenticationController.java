@@ -1,28 +1,31 @@
 package project.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import project.common.CommonResponse;
-
 import java.util.logging.Logger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import project.common.CustomException;
+import project.model.Authentication.LoginRequest;
+import project.model.common.CommonResponse;
+import project.service.AuthenticationServiceImplementation;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationController{
 
     Logger logger = Logger.getLogger(AuthenticationController.class.getName());
+    @Autowired
+    private AuthenticationServiceImplementation authService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET, produces = "application/json")
-    public CommonResponse getGameList(
-            @RequestParam(value = "request", required = true) String stringRequest)
+    @PostMapping("/login")
+    public CommonResponse login(@RequestBody(required = true) @Valid LoginRequest request)throws CustomException
     {
-        logger.info("Games List - request{} " + stringRequest);
         CommonResponse response = new CommonResponse();
-        response.setResponseCode(1001);
-        response.setResposneMessage("SUCCESS");
-        logger.info("Games List - response{} " + response.toString());
+        authService.login(request);
+        response.setSuccessResponse();
         return response;
     }
 

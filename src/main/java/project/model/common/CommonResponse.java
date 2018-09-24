@@ -1,4 +1,6 @@
-package project.common;
+package project.model.common;
+
+import project.common.ResponseMessages;
 
 public class CommonResponse {
 
@@ -21,6 +23,10 @@ public class CommonResponse {
         this.resposneMessage = resposneMessage;
     }
 
+    public void setSuccessResponse(){
+        this.responseCode= ResponseMessages.SUCCESS_CODE;
+        this.resposneMessage = ResponseMessages.SUCCESS_MESSAGE;
+    }
     @Override
     public String toString() {
         return "CommonResponse{" +

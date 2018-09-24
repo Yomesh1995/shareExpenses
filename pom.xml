@@ -7,7 +7,7 @@
     <groupId>project</groupId>
     <artifactId>shareExpenses</artifactId>
     <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0_{VERSION}</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -27,23 +27,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- It is use for monitoring and managing application -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+
         <!-- It is use for Aspects -->
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop -->
-       <!-- <dependency>
+       <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>-->
-       <!-- &lt;!&ndash; It is use to write unit and integration test cases &ndash;&gt;
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>-->
+        </dependency>
 
         <!-- It is use for implement JDBCTemplate -->
         <dependency>
@@ -55,6 +45,10 @@
                     <artifactId>tomcat-jdbc</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <!-- TO run this project in external web container -->
         <dependency>
@@ -82,35 +76,9 @@
             <version>2.8.0</version><!--$NO-MVN-MAN-VER$ -->
         </dependency>
 
-        <!-- Test Cases Dependencies
-
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>1.10.19</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito</artifactId>
-            <version>1.6.6</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-module-junit4</artifactId>
-            <version>1.6.6</version>
-            <scope>test</scope>
-        </dependency>
-         End of Test Cases Dependencies -->
-
-        <!-- It is used to create data source -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
-            <version>2.0</version><!--$NO-MVN-MAN-VER$ -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 
