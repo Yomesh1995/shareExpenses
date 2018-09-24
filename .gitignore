@@ -1,4 +1,7 @@
-.git/
 .idea
 target/
+.classpath
+.project
+.settings/
 shareExpenses.iml
+
