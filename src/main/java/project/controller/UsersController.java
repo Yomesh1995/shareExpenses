@@ -1,10 +1,7 @@
 package project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import project.model.common.CommonResponse;
 import project.common.CustomException;
 import project.model.user.UserInfo;
@@ -26,6 +23,13 @@ public class UsersController {
         CommonResponse response=new CommonResponse();
         logger.info("UserInfo {} "+ user.toString());
         userServiceImplementation.userRegistration(user);
+        response.setSuccessResponse();
+        return response;
+    }
+
+    @GetMapping("/username")
+    public CommonResponse getSimiliarUsername(@RequestParam(required = true) String username) throws CustomException{
+        CommonResponse response=new CommonResponse();
         response.setSuccessResponse();
         return response;
     }
