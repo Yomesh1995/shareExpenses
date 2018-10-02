@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
+           <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-tomcat</artifactId>
@@ -39,17 +39,17 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
-            <exclusions>
+           <exclusions>
                 <exclusion>
                     <groupId>org.apache.tomcat</groupId>
                     <artifactId>tomcat-jdbc</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+        </dependency> -->
         <!-- TO run this project in external web container -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -83,7 +83,7 @@
     </dependencies>
 
     <build>
-        <finalName>${artifactId}</finalName>
+        <!-- <finalName>${artifactId}</finalName> -->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

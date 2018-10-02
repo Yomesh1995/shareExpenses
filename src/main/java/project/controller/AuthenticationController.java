@@ -2,21 +2,21 @@ package project.controller;
 
 import java.util.logging.Logger;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import project.common.CustomException;
-import project.model.Authentication.LoginRequest;
-import project.model.common.CommonResponse;
+import project.model.CommonResponse;
+import project.model.LoginRequest;
 import project.service.AuthenticationServiceImplementation;
-
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationController{
 
-    Logger logger = Logger.getLogger(AuthenticationController.class.getName());
+    private Logger logger = Logger.getLogger(AuthenticationController.class.getName());
     @Autowired
     private AuthenticationServiceImplementation authService;
 
@@ -29,4 +29,11 @@ public class AuthenticationController{
         return response;
     }
 
+    @GetMapping("/")
+    public CommonResponse loginTest()
+    {
+        CommonResponse response = new CommonResponse();
+        response.setSuccessResponse();
+        return response;
+    }
 }

@@ -1,9 +1,9 @@
 package project.common;
 
-import project.model.common.CommonResponse;
-
 import java.util.List;
 import java.util.Map;
+
+import project.model.CommonResponse;
 
 public class BeanValidationResponse extends CommonResponse {
 

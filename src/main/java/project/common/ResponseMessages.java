@@ -19,4 +19,7 @@ public class ResponseMessages {
 
     public static int INVALID_CREDENTIAL_CODE = 2002;
     public static String INVALID_CREDENTIAL_MESSAGE = "Invalid Credentials";
+    
+    public static int DUPLICATE_USERS_CODE = 2003;
+    public static String DUPLICATE_USERS_MESSAGE = "Duplicate Users";
 }
