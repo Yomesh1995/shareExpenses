@@ -1,9 +1,16 @@
 package project.common;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -11,13 +18,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import project.model.CommonResponse;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Logger;
 
 @RestControllerAdvice
 public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
@@ -46,6 +46,6 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
         response.setResponseCode(ResponseMessages.BEAN_VALIDATION_ERROR_CODE);
         response.setResposneMessage(ResponseMessages.BEAN_VALIDATION_ERROR_MESSAGE);
         response.setErrorField(errorFields);
-        return new ResponseEntity(response, HttpStatus.OK);
+        return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
 }

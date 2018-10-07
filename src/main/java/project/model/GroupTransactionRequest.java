@@ -1,16 +1,21 @@
 package project.model;
 
+import java.util.List;
+
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
-public class TransactionRequest {
+public class GroupTransactionRequest {
 
 	@Min(value = 1, message = "Invalid Username")
 	private int fromUser;
-	@Min(value = 1, message = "Invalid TargetName")
-	private int toUser;
+	@NotEmpty(message = "Invalid Target Users")
+	private List<Integer> toUsers;
 	@DecimalMin(value = "0.01", message = "Invalid Amount")
 	private double amount;
+	@Min(value = 1, message = "Invalid Group")
+	private int groupId;
 
 	public int getFromUser() {
 		return fromUser;
@@ -20,12 +25,12 @@ public class TransactionRequest {
 		this.fromUser = fromUser;
 	}
 
-	public int getToUser() {
-		return toUser;
+	public List<Integer> getToUsers() {
+		return toUsers;
 	}
 
-	public void setToUser(int toUser) {
-		this.toUser = toUser;
+	public void setToUsers(List<Integer> toUsers) {
+		this.toUsers = toUsers;
 	}
 
 	public double getAmount() {
@@ -34,6 +39,14 @@ public class TransactionRequest {
 
 	public void setAmount(double amount) {
 		this.amount = amount;
+	}
+
+	public int getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
 	}
 
 }

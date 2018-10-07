@@ -3,6 +3,10 @@ package project.model;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(value=Include.NON_DEFAULT)
 public class UserInfo {
 
 	private int userId;

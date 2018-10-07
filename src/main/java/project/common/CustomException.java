@@ -1,37 +1,40 @@
 package project.common;
 
-public class CustomException extends  Exception{
-    private int errorCode;
-    private String errorMessage;
+public class CustomException extends Exception {
 
-    public int getErrorCode() {
-        return errorCode;
-    }
+	private static final long serialVersionUID = 1L;
+	private int errorCode;
+	private String errorMessage;
 
-    public void setErrorCode(int errorCode) {
-        this.errorCode = errorCode;
-    }
+	public int getErrorCode() {
+		return errorCode;
+	}
 
-    public String getErrorMessage() {
-        return errorMessage;
-    }
+	public void setErrorCode(int errorCode) {
+		this.errorCode = errorCode;
+	}
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
+	public String getErrorMessage() {
+		return errorMessage;
+	}
 
-    public CustomException(int errorCode,String errorMessage) {
-        this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
-    }
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
 
-    public CustomException(String errorMessage){
-        this.errorMessage=errorMessage;
-    }
+	public CustomException(int errorCode, String errorMessage) {
+		this.errorCode = errorCode;
+		this.errorMessage = errorMessage;
+	}
 
-    public CustomException(int errorCode){
-        this.errorCode=errorCode;
-    }
+	public CustomException(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
 
-    public CustomException(){}
+	public CustomException(int errorCode) {
+		this.errorCode = errorCode;
+	}
+
+	public CustomException() {
+	}
 }

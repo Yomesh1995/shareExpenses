@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -48,11 +49,11 @@ public class UserDaoImplementation {
 		}
 	}
 
-	public List<String> similiarUsername(String username) {
-		String query = "select username from user_master where user_name like '" + username + "%'";
-		List<String> similiarUser = null;
+	public List<UserInfo> similiarUsername(String username) {
+		String query = "select user_id as userId,username as userNamefrom user_master where user_name like '" + username + "%'";
+		List<UserInfo> similiarUser = null;
 		try {
-			similiarUser = jdbcTemplate.queryForList(query, String.class);
+			similiarUser = jdbcTemplate.query(query, new BeanPropertyRowMapper<UserInfo>(UserInfo.class));
 		} catch (EmptyResultDataAccessException ex) {
 			return null;
 		} catch (Exception ex) {
@@ -96,12 +97,24 @@ public class UserDaoImplementation {
 
 				@Override
 				public int getBatchSize() {
-					// TODO Auto-generated method stub
 					return usersId.size();
 				}
 			});
 		} catch (Exception ex) {
 			throw ex;
 		}
+	}
+	
+	public List<GroupRegistration> similiarGroupname(String groupname) {
+		String query = "select group_id as groupId, group_name as groupName from group_master where group_name like '" + groupname + "%'";
+		List<GroupRegistration> similiarUser = null;
+		try {
+			similiarUser = jdbcTemplate.query(query, new BeanPropertyRowMapper<GroupRegistration>(GroupRegistration.class));
+		} catch (EmptyResultDataAccessException ex) {
+			return null;
+		} catch (Exception ex) {
+			throw ex;
+		}
+		return similiarUser;
 	}
 }

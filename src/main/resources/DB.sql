@@ -48,14 +48,6 @@ CREATE TABLE `group_txn_detail`(
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB CHARSET=utf8;
 
-CREATE TABLE `group_txn_detail`(  
-  `id` INT(10) NOT NULL AUTO_INCREMENT,
-  `txn_id` INT(10) NOT NULL,
-  `to_user_id` INT(6) NOT NULL,
-  `status` ENUM('Pending','Settled') NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=INNODB CHARSET=utf8;
-
 CREATE TABLE `transaction_user_detail`( 
 	`id` INT(10) NOT NULL AUTO_INCREMENT, 
 	`txn_id` INT(10) NOT NULL, 
@@ -64,4 +56,16 @@ CREATE TABLE `transaction_user_detail`(
 	PRIMARY KEY (`id`) 
 ) ENGINE=INNODB CHARSET=utf8;
 
- ALTER TABLE `login_details` DROP COLUMN `new_password`;
+CREATE TABLE `group_users_detail` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `group_id` INT(10) NOT NULL,
+  `user_id` INT(6) NOT NULL,
+  `credit_amt` DOUBLE(20,2) NOT NULL,
+  `debit_amt` DOUBLE(20,2) NOT NULL,
+  PRIMARY KEY (`group_id`,`user_id`),
+  KEY `id` (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8
+
+ALTER TABLE `login_details` DROP COLUMN `new_password`;
+ 
+ 

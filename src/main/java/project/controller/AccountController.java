@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import project.common.CustomException;
 import project.model.CommonResponse;
+import project.model.GroupTransactionRequest;
 import project.model.TransactionRequest;
 import project.service.AccountServiceImplementation;
 
@@ -20,11 +21,29 @@ public class AccountController {
 	@Autowired
 	private AccountServiceImplementation accountServiceImplementation;
 
-	@PostMapping("/one")
+	@PostMapping("/oneTransaction")
+	public CommonResponse ownTransaction(@RequestBody(required = true) @Valid TransactionRequest request)
+			throws CustomException {
+		CommonResponse response = new CommonResponse();
+		accountServiceImplementation.ownTransaction(request);
+		response.setSuccessResponse();
+		return response;
+	}
+	
+	@PostMapping("/oneTransaction")
 	public CommonResponse oneToOneTransaction(@RequestBody(required = true) @Valid TransactionRequest request)
 			throws CustomException {
 		CommonResponse response = new CommonResponse();
 		accountServiceImplementation.oneToOneTransaction(request);
+		response.setSuccessResponse();
+		return response;
+	}
+	
+	@PostMapping("/groupTransaction")
+	public CommonResponse groupTransaction(@RequestBody(required = true) @Valid GroupTransactionRequest request)
+			throws CustomException {
+		CommonResponse response = new CommonResponse();
+		accountServiceImplementation.groupTransaction(request);
 		response.setSuccessResponse();
 		return response;
 	}
